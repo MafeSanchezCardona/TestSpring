@@ -26,16 +26,4 @@ public class PersonaController {
 
         return new ResponseEntity<>(personaList, HttpStatus.OK);
     }
-
-    /*@RequestMapping(value = "/find-all.do")
-    public @ResponseBody String findAll() {
-
-        List<Persona> personaList = personaService.findAll();
-
-        StringBuilder stringBuilder = new StringBuilder();
-
-        personaList.forEach(item->stringBuilder.append(item.getNombre()).append(" ").append(item.getApellido()).append(" - "));
-
-        return stringBuilder.toString();
-    }*/
 }
