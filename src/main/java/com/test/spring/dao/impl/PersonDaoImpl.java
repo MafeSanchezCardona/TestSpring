@@ -20,7 +20,13 @@ public class PersonDaoImpl implements PersonDao {
 
     @Override
     public Person find(Person entity) {
-        return null;
+
+        Person personReturn = personList.stream()
+                .filter(personFilter -> (entity.getName().equals(personFilter.getName()) && entity.getLastName().equals(personFilter.getLastName())))
+                .findAny()
+                .orElse(null);
+
+        return personReturn;
     }
 
     @Override
@@ -30,17 +36,20 @@ public class PersonDaoImpl implements PersonDao {
 
     @Override
     public void insert(Person entity) {
-
+        personList.add(entity);
     }
 
     @Override
     public Person update(Person entity) {
-        return null;
+        this.delete(entity);
+        this.insert(entity);
+        return entity;
     }
 
     @Override
     public void delete(Person entity) {
-
+        Person personFind = find(entity);
+        personList.remove(personFind);
     }
 
     public List<Person> getPersonList() {
@@ -51,12 +60,12 @@ public class PersonDaoImpl implements PersonDao {
         this.personList = personList;
     }
 
-    @PostConstruct
+    //@PostConstruct
     public void inicializa() {
         System.out.println("Init Bean");
     }
 
-    @PreDestroy
+    //@PreDestroy
     public void libera() {
         System.out.println("Destroy Bean");
     }

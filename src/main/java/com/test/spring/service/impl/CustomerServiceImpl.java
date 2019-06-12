@@ -1,5 +1,6 @@
 package com.test.spring.service.impl;
 
+import com.test.spring.dao.AddressDao;
 import com.test.spring.dao.PersonDao;
 import com.test.spring.domain.Person;
 import com.test.spring.service.CustomerService;
@@ -16,6 +17,10 @@ public class CustomerServiceImpl implements CustomerService {
     @Qualifier("personDao")
     private PersonDao personDao;
 
+    @Autowired
+    @Qualifier("addressDao")
+    private AddressDao addressDao;
+
     @Override
     public Person findPerson(Person person) {
         return personDao.find(person);
@@ -28,6 +33,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void addPerson(Person person) {
+        addressDao.insert(person.getAddress());
         personDao.insert(person);
     }
 

@@ -18,8 +18,8 @@
             <c:forEach items="${personList}" var="person">
                 <tbody>
                     <tr>
-                        <td>${person.nombre}</td>
-                        <td>${person.apellido}</td>
+                        <td>${person.name}</td>
+                        <td>${person.lastName}</td>
                     </tr>
                 </tbody>
             </c:forEach>

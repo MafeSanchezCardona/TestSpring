@@ -58,7 +58,7 @@
         </constructor-arg>
     </bean>
 
-    <bean id="personDao" class="com.test.spring.dao.impl.PersonDaoImpl">
+    <bean id="personDao" class="com.test.spring.dao.impl.PersonDaoImpl" init-method="inicializa" destroy-method="libera">
         <property name="personList">
             <list>
                 <ref bean="person1" />
