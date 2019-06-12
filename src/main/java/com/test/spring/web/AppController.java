@@ -1,7 +1,7 @@
 package com.test.spring.web;
 
-import com.test.spring.dominio.Persona;
-import com.test.spring.service.PersonaService;
+import com.test.spring.domain.Person;
+import com.test.spring.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,15 +14,15 @@ import java.util.List;
 public class AppController {
 
     @Autowired
-    private PersonaService personaService;
+    private CustomerService customerService;
 
     @RequestMapping(value = "/")
     @ResponseBody
     public ModelAndView load() {
 
         ModelAndView modelAndView = new ModelAndView("index");
-        List<Persona> personaList = personaService.findAll();
-        modelAndView.addObject("personaList", personaList);
+        List<Person> personList = customerService.findAllPerson();
+        modelAndView.addObject("personList", personList);
 
         return modelAndView;
     }

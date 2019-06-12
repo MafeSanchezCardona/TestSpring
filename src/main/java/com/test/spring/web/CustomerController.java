@@ -1,7 +1,7 @@
 package com.test.spring.web;
 
-import com.test.spring.dominio.Persona;
-import com.test.spring.service.PersonaService;
+import com.test.spring.domain.Person;
+import com.test.spring.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,18 +13,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 @Controller
-@RequestMapping("/persona")
-public class PersonaController {
+@RequestMapping("/customer")
+public class CustomerController {
 
     @Autowired
-    private PersonaService personaService;
+    private CustomerService customerService;
 
     @RequestMapping(value = "/find-all.do", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<List<Persona>> findAll() {
+    public ResponseEntity<List<Person>> findAll() {
 
-        List<Persona> personaList = personaService.findAll();
+        List<Person> personList = customerService.findAllPerson();
 
-        return new ResponseEntity<>(personaList, HttpStatus.OK);
+        return new ResponseEntity<>(personList, HttpStatus.OK);
     }
 }

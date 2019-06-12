@@ -1,8 +1,8 @@
 package com.test.spring;
 
-import com.test.spring.dao.PersonaDao;
-import com.test.spring.dao.impl.PersonaDaoImpl;
-import com.test.spring.dominio.Persona;
+import com.test.spring.dao.PersonDao;
+import com.test.spring.dao.impl.PersonDaoImpl;
+import com.test.spring.domain.Person;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -14,21 +14,15 @@ public class App {
 
         ApplicationContext context = new ClassPathXmlApplicationContext("classpath*:applicationContext.xml");
 
-        Persona persona = (Persona) context.getBean("persona");
-        System.out.println(persona.getApellido());
+        List<Person> personList = (List<Person>) context.getBean("personaList");
 
-        Persona persona2 = (Persona) context.getBean("persona2");
-        System.out.println(persona2.getApellido());
+        personList.forEach(item->System.out.println(item));
 
-        List<Persona> personaList = (List<Persona>) context.getBean("personaList");
+        PersonDao personDao = new PersonDaoImpl();
 
-        personaList.forEach(item->System.out.println(item));
+        List<Person> personList2 = personDao.findAll();
 
-        PersonaDao personaDao = new PersonaDaoImpl();
-
-        List<Persona> personaList2 = personaDao.findAll();
-
-        personaList2.forEach(item->System.out.println(item));
+        personList2.forEach(item->System.out.println(item));
 
     }
 }

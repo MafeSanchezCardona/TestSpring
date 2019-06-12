@@ -15,11 +15,11 @@
                     <th scope="col">Apellido</th>
                 </tr>
             </thead>
-            <c:forEach items="${personaList}" var="persona">
+            <c:forEach items="${personList}" var="person">
                 <tbody>
                     <tr>
-                        <td>${persona.nombre}</td>
-                        <td>${persona.apellido}</td>
+                        <td>${person.nombre}</td>
+                        <td>${person.apellido}</td>
                     </tr>
                 </tbody>
             </c:forEach>
