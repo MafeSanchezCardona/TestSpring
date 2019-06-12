@@ -5,13 +5,14 @@ import com.test.spring.domain.Address;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
 @Qualifier("addressDao")
 public class AddressDaoImpl implements AddressDao {
 
-    private List<Address> addressList;
+    private List<Address> addressList = new ArrayList<>();
 
     @Override
     public Address find(Address entity) {

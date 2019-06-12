@@ -66,4 +66,7 @@
             </list>
         </property>
     </bean>
+
+    <bean id="addressDao" class="com.test.spring.dao.impl.AddressDaoImpl">
+    </bean>
 </beans>
